@@ -1,3 +1,5 @@
+import "./toggle.css";
+
 interface Props {
   on?: boolean
   onClick?: () => {}
@@ -6,8 +8,8 @@ interface Props {
 }
 
 export default function Toggle({on = false, testId, children, onClick}: Props) {
-
+  const cssClasses = ['Toggle', 'Toggle_enable_'.concat(on ? 'on' : 'off' )].join(" ");
   return (
-    <button className="counter__control_black selected" data-testid={testId}>{children}</button>
+    <button className={cssClasses} data-testid={testId} onClick={onClick}>{children}</button>
   )
 }
