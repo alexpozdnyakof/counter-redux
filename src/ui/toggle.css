@@ -1,0 +1,25 @@
+.Toggle {
+  background-color: transparent;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 16px;
+  border-radius: 10px;
+  padding: 8px 12px;
+  border-color: transparent;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition);
+  border-width: 1px;
+  border-style: solid;
+
+}
+
+.Toggle_enable_on {
+  background-color: var(--color-background-accent);
+  color: var(--color-primary);
+}
