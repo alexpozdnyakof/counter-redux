@@ -19,7 +19,7 @@
 
 }
 
-.Toggle_enable_on {
+.Toggle:hover, .Toggle_enable_on {
   background-color: var(--color-background-accent);
   color: var(--color-primary);
 }

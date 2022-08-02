@@ -9,7 +9,15 @@ body {
   text-size-adjust: 100%;
 }
 
+* {
+  box-sizing: border-box;
+}
+button, input {
+  font: inherit;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+

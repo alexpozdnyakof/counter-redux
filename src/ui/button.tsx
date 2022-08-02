@@ -10,7 +10,7 @@ type ButtonProps = {
 export default function Button({children,
   variant = 'primary',
   testId,
-  onClick = () => {}
+  onClick
 }: Partial<ButtonProps>) {
   const cssClasses = ['Button','Button_variant_'.concat(variant)].join(" ");
 

@@ -31,11 +31,7 @@
 
   font-size: 12px;
 
-  padding: 6px 0 8px;
-
-
-  width: 120px;
-  height: 42px;
+  padding: 16px 24px 17px;
 
 }
 
@@ -43,20 +39,12 @@
   background-color: var(--color-primary-light);
 }
 
-
-
-
-
-
-
 .Button_variant_secondary {
   background-color: transparent;
   border-color: var(--color-space-gray);
-  border-radius: 12px;
-  padding: 12px 0 11px;
+  border-radius: 16px;
+  padding: 14px 16px 13px;
   font-size: 10px;
-
-  min-width: 112px;
 }
 
 .Button_variant_secondary:hover{
