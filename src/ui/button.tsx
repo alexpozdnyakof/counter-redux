@@ -1,4 +1,4 @@
-import './button.css';
+import styles from './button.module.css';
 
 type ButtonProps = {
   children: string;
@@ -12,7 +12,7 @@ export default function Button({children,
   testId,
   onClick
 }: Partial<ButtonProps>) {
-  const cssClasses = ['Button','Button_variant_'.concat(variant)].join(" ");
+  const cssClasses = [styles.Button,styles['Button_variant_'.concat(variant)]].join(" ");
 
   return (
     <button className={cssClasses} data-testid={testId} onClick={onClick}>
