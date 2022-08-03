@@ -21,59 +21,8 @@
   height: 100vh;
 }
 
-.Container {
-  width: 640px;
-  margin: auto;
-  position: relative;
-}
 
 .Wrapper {
   margin: auto;
-}
-.Notation {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 56px; /* в лэйаут */
-}
-
-.Notation-Title{
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: bold;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-  color: var(--color-counter);
-}
-
-.Notation-Values{
-  display: flex;
-}
-
-.CounterWrapper {
-  height: auto;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.CounterWrapper > .Counter {
-  width: 90%;
-}
-
-
-.ControlPanel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 56px; /* в лэйаут */
-}
-
-.ControlPanel > * + * {
-  margin-left: 8px;
 }
 

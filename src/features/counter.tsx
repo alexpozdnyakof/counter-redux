@@ -1,14 +1,45 @@
-import './counter.css';
+import { useAppDispatch, useAppSelector } from '../storeHooks';
+import { Button, TextField, Toggle } from '../ui';
+import styles from './counter.module.css';
+import { selectCount } from './counterSelector';
+import { decrement, increment } from './counterSlice';
 
-interface Props {
-  value?: number;
-  onBlur?: () => {}
-  testId?: string
-}
 
-export default function Counter({value, onBlur, testId}: Props) {
+export default function Counter(){
+  const notations =  Array.from(new Array(10), (x, i)  => i + 1 );
+  const count = useAppSelector(selectCount);
+  const dispatch = useAppDispatch();
 
-  return (
-    <input className="Counter" defaultValue={value} data-testid={testId} onBlur={onBlur} type="number"/>
+
+
+  return(
+    <>
+      <div className={styles.Container}>
+        <div className={styles.Notation}>
+          <span className={styles['Notation-Title']}>Switch Notation</span>
+            <div className={styles['Notation-Values']}>
+              {
+                notations.map((n) =>
+                  <Toggle on={n === 10} key={`toggle_${n}`}>
+                    {n.toString()}
+                  </Toggle>
+                )
+              }
+            </div>
+          </div>
+        </div>
+
+      <div className={styles.CounterWrapper}>
+        <TextField value={count}/>
+      </div>
+
+      <div className={styles.ControlPanel}>
+        <Button onClick={() => dispatch(decrement())}>Decrement</Button>
+        <Button variant='secondary'>Reset</Button>
+        <Button variant='secondary'>Remote Sync</Button>
+        <Button variant='secondary'>Schedule Task</Button>
+        <Button onClick={() => dispatch(increment())}>Increment</Button>
+      </div>
+    </>
   )
 }
