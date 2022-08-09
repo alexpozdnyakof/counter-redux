@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../storeHooks';
 import { Button, TextField, Toggle } from '../ui';
 import styles from './counter.module.css';
 import { selectCount } from './counterSelector';
-import { decrement, increment, setValue } from './counterSlice';
+import { decrement, increment, setValue, syncValue } from './counterSlice';
 
 
 export default function Counter(){
@@ -38,7 +38,7 @@ export default function Counter(){
       <div className={styles.ControlPanel}>
         <Button onClick={() => dispatch(decrement())} ariaLabel="decrement">Decrement</Button>
         <Button variant='secondary'>Reset</Button>
-        <Button variant='secondary'>Remote Sync</Button>
+        <Button onClick={() => dispatch(syncValue())} variant='secondary' ariaLabel="sync-value">Remote Sync</Button>
         <Button variant='secondary'>Schedule Task</Button>
         <Button onClick={() => dispatch(increment())} ariaLabel="increment">Increment</Button>
       </div>

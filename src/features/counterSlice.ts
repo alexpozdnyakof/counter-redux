@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import syncApi from './sync-api'
 
 interface CounterState {
 	value: number
@@ -9,6 +10,11 @@ const initialState: CounterState = {
 	value: 0,
 	status: 'idle',
 }
+
+export const syncValue = createAsyncThunk('counter/syncValue', async () => {
+	const result = await syncApi()
+	return result.data
+})
 
 export const counterSlice = createSlice({
 	name: 'counter',
@@ -33,6 +39,19 @@ export const counterSlice = createSlice({
 				state.value += Number(action.payload)
 			}
 		},
+	},
+	extraReducers: builder => {
+		builder
+			.addCase(syncValue.pending, state => {
+				state.status = 'loading'
+			})
+			.addCase(syncValue.fulfilled, (state, action) => {
+				state.status = 'idle'
+				state.value = action.payload
+			})
+			.addCase(syncValue.rejected, state => {
+				state.status = 'failed'
+			})
 	},
 })
 

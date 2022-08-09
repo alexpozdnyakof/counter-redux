@@ -27,14 +27,18 @@ describe('Counter', () => {
   })
 
 
-  it('should set new value when text field blur', () => {
+  it('should set new value when text field change', () => {
     cy.mount(<Provider store={store}><Counter/></Provider>)
     cy.get(ariaLabelSelector('counter-value')).type('1');
-
     cy.get(ariaLabelSelector('counter-value')).should('have.value', 21)
   })
 
-
+  it('should sync value', () => {
+    cy.mount(<Provider store={store}><Counter/></Provider>)
+    cy.get(ariaLabelSelector('sync-value')).click();
+    cy.wait(500)
+    cy.get(ariaLabelSelector('counter-value')).should('have.value', 338);
+  })
 
 
 })
