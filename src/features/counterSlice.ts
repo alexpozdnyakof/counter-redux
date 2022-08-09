@@ -20,12 +20,23 @@ export const counterSlice = createSlice({
 		decrement: state => {
 			state.value -= 1
 		},
-		incrementByAmount: (state, action: PayloadAction<number>) => {
-			state.value += action.payload
+		setValue: (state, action: PayloadAction<string | undefined>) => {
+			if (typeof action.payload == 'string') {
+				state.value = Number(action.payload)
+			}
+		},
+		incrementByAmount: (
+			state,
+			action: PayloadAction<string | undefined>
+		) => {
+			if (typeof action.payload == 'string') {
+				state.value += Number(action.payload)
+			}
 		},
 	},
 })
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export const { increment, decrement, incrementByAmount, setValue } =
+	counterSlice.actions
 
 export default counterSlice.reducer

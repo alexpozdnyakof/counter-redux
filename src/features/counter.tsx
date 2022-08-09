@@ -1,11 +1,13 @@
+import { useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../storeHooks';
 import { Button, TextField, Toggle } from '../ui';
 import styles from './counter.module.css';
 import { selectCount } from './counterSelector';
-import { decrement, increment } from './counterSlice';
+import { decrement, increment, setValue } from './counterSlice';
 
 
 export default function Counter(){
+  const valueRef = useRef<HTMLInputElement>(null);
   const notations =  Array.from(new Array(10), (x, i)  => i + 1 );
   const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
@@ -29,16 +31,16 @@ export default function Counter(){
           </div>
         </div>
 
-      <div className={styles.CounterWrapper}>
-        <TextField value={count}/>
+      <div className={styles.ValueWrapper}>
+        <TextField ref={valueRef} value={count} ariaLabel="counter-value" onChange={(e) => {dispatch(setValue(e.target.value))}}/>
       </div>
 
       <div className={styles.ControlPanel}>
-        <Button onClick={() => dispatch(decrement())}>Decrement</Button>
+        <Button onClick={() => dispatch(decrement())} ariaLabel="decrement">Decrement</Button>
         <Button variant='secondary'>Reset</Button>
         <Button variant='secondary'>Remote Sync</Button>
         <Button variant='secondary'>Schedule Task</Button>
-        <Button onClick={() => dispatch(increment())}>Increment</Button>
+        <Button onClick={() => dispatch(increment())} ariaLabel="increment">Increment</Button>
       </div>
     </>
   )
