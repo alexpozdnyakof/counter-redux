@@ -1,4 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { AppThunk } from '../store'
+import { selectCount } from './counterSelector'
 import syncApi from './sync-api'
 
 interface CounterState {
@@ -16,6 +18,13 @@ export const syncValue = createAsyncThunk('counter/syncValue', async () => {
 	return result.data
 })
 
+export const resetValueIfNotZero = (): AppThunk => (dispatch, getState) => {
+	const currentValue = selectCount(getState())
+	if (currentValue !== 0) {
+		dispatch(setValue('0'))
+	}
+}
+
 export const counterSlice = createSlice({
 	name: 'counter',
 	initialState,
@@ -29,14 +38,6 @@ export const counterSlice = createSlice({
 		setValue: (state, action: PayloadAction<string | undefined>) => {
 			if (typeof action.payload == 'string') {
 				state.value = Number(action.payload)
-			}
-		},
-		incrementByAmount: (
-			state,
-			action: PayloadAction<string | undefined>
-		) => {
-			if (typeof action.payload == 'string') {
-				state.value += Number(action.payload)
 			}
 		},
 	},
@@ -55,7 +56,6 @@ export const counterSlice = createSlice({
 	},
 })
 
-export const { increment, decrement, incrementByAmount, setValue } =
-	counterSlice.actions
+export const { increment, decrement, setValue } = counterSlice.actions
 
 export default counterSlice.reducer

@@ -36,8 +36,15 @@ describe('Counter', () => {
   it('should sync value', () => {
     cy.mount(<Provider store={store}><Counter/></Provider>)
     cy.get(ariaLabelSelector('sync-value')).click();
-    cy.wait(500)
+    cy.wait(2000)
     cy.get(ariaLabelSelector('counter-value')).should('have.value', 338);
+  })
+
+  it('should reset value', () => {
+    cy.mount(<Provider store={store}><Counter/></Provider>)
+    cy.get(ariaLabelSelector('reset')).click();
+
+    cy.get(ariaLabelSelector('counter-value')).should('have.value', 0)
   })
 
 
