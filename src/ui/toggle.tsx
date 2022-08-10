@@ -1,4 +1,4 @@
-import "./toggle.css";
+import styles from "./toggle.module.css";
 
 interface Props {
   on?: boolean
@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function Toggle({on = false, testId, children, onClick}: Props) {
-  const cssClasses = ['Toggle', 'Toggle_enable_'.concat(on ? 'on' : 'off' )].join(" ");
+  const cssClasses = [styles.Toggle, styles['Toggle_enable_'.concat(on ? 'on' : 'off' )]].join(" ");
   return (
     <button
         className={cssClasses}

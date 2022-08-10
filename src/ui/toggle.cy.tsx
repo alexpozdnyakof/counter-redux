@@ -12,13 +12,17 @@ describe('Toggle', () => {
 
   it('should be disable', () => {
     cy.mount(<Toggle testId="toggle">1</Toggle>)
-    cy.get('[data-testid=toggle]').should('have.class', 'Toggle_enable_off')
+    cy.get('[data-testid=toggle]').should(($div) => {
+      expect($div[0].className).not.contains('Toggle_enable_on')
+    })
   })
 
 
   it('should be enable', () => {
     cy.mount(<Toggle testId="toggle" on>1</Toggle>)
-    cy.get('[data-testid=toggle]').should('have.class', 'Toggle_enable_on')
+    cy.get('[data-testid=toggle]').should(($div) => {
+      expect($div[0].className).contains('Toggle_enable_on')
+    })
   })
 
   it('should trigger click', () => {
