@@ -27,13 +27,13 @@
   -webkit-appearance: none;
 }
 
-.TextField:active, .TextField:focus, .TextField:hover{
+.TextField:active, .TextField:focus, .TextField:hover, .TextField:disabled {
   border-color: var(--color-space-gray);
   background-color: var(--color-background-accent);
 }
 
 
-.TextField:focus{
+.TextField:focus, .TextField:disabled{
   font-style: italic;
   color: var(--color-primary);
 }

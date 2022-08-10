@@ -8,14 +8,16 @@ interface Props {
   testId: string
   ariaLabel: string
   ref: ForwardedRef<HTMLInputElement>
+  disabled: boolean
 }
 
-function Component({value, onBlur, onChange, testId, ariaLabel, ref}: Partial<Props>) {
+function Component({value, testId, ariaLabel, disabled, onBlur, onChange,  ref}: Partial<Props>) {
 
   return (
     <input
       ref={ref}
       className={styles.TextField}
+      disabled={disabled}
       value={value}
       aria-label={ariaLabel}
       data-testid={testId}

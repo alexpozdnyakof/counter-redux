@@ -23,20 +23,20 @@
   background-color: var(--color-primary);
   box-shadow: inset 0 -3px 0 var(--color-primary-dark);
   border-color: var(--color-primary-dark);
-
   color: var(--color-white);
-
   border-radius: 16px;
-
-
   font-size: 12px;
-
   padding: 16px 24px 17px;
 
 }
 
 .Button_variant_primary:hover {
-  background-color: var(--color-primary-light);
+  box-shadow: inset 0 -2px 0 var(--color-primary-dark);
+}
+
+.Button_variant_primary:disabled {
+  box-shadow: inset 0 -1px 0 var(--color-primary-dark);
+  text-decoration: line-through;
 }
 
 .Button_variant_secondary {
@@ -49,5 +49,11 @@
 
 .Button_variant_secondary:hover{
   background-color: var(--color-background-accent);
+  color: var(--color-primary);
+}
+.Button_variant_secondary:disabled{
+  border-color: var(--color-space-gray-light);
+  text-decoration: line-through;
+  border-radius: 20px;
   color: var(--color-primary);
 }

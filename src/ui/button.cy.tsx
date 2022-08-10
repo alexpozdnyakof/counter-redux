@@ -7,12 +7,21 @@ describe('Button', () => {
 
   it('should set primary variant', () => {
     cy.mount(<Button testId="button">Text</Button>)
-    cy.get('[data-testid=button]').should('have.class', 'Button_variant_primary')
+    cy.get('[data-testid=button]').should(($div) => {
+      expect($div[0].className).contains('Button_variant_primary')
+    })
   })
 
   it('should set secondary variant', () => {
     cy.mount(<Button testId="button" variant="secondary">Text</Button>)
-    cy.get('[data-testid=button]').should('have.class', 'Button_variant_secondary')
+    cy.get('[data-testid=button]').should(($div) => {
+      expect($div[0].className).contains('Button_variant_secondary')
+    })
+  })
+
+  it('should set disabled', () => {
+    cy.mount(<Button testId="button" disabled>Text</Button>)
+    cy.get('[data-testid=button]').should('have.attr', 'disabled')
   })
 
   it('should handle click', () => {
