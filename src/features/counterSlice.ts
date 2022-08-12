@@ -3,6 +3,10 @@ import { AppThunk } from '../store'
 import { selectCount } from './counterSelector'
 import syncApi from './sync-api'
 
+export enum ActionTypes {
+	ScheduleSync = 'SCHEDULE_SYNC',
+}
+
 interface CounterState {
 	value: number
 	status: 'idle' | 'loading' | 'failed'
@@ -24,6 +28,10 @@ export const resetValueIfNotZero = (): AppThunk => (dispatch, getState) => {
 		dispatch(setValue('0'))
 	}
 }
+
+export const sagaAction = () => ({
+	type: ActionTypes.ScheduleSync,
+})
 
 export const counterSlice = createSlice({
 	name: 'counter',
