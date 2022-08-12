@@ -50,7 +50,7 @@ export default function Counter(){
         <Button onClick={() => dispatch(resetValueIfNotZero())} disabled={status === 'loading' || scheduled} variant='secondary' ariaLabel="reset">Reset</Button>
         <Button onClick={() => dispatch(syncValue())} disabled={status === 'loading' || scheduled} variant='secondary' ariaLabel="sync-value">Remote Sync</Button>
         <Button onClick={() => setScheduled(!scheduled)} disabled={status === 'loading'} variant='secondary' ariaLabel='schedule'>
-          {scheduled ? 'Unschedule Increment' : 'Schedule Increment'}
+          {scheduled ? 'Unschedule' : 'Schedule'}
         </Button>
         <Button onClick={() => dispatch(increment())} disabled={status === 'loading' || scheduled} ariaLabel="increment">Increment</Button>
       </div>
